@@ -1,6 +1,7 @@
 package com.kostyarazboynik.fragments
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -11,8 +12,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).setupWithNavController(
-            (supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment).navController
-        )
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNav.setupWithNavController(navController)
+
+        // Скрываем нижнюю навигацию на экране настроек
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            bottomNav.visibility = when (destination.id) {
+                R.id.settingsFragment -> View.GONE
+                else -> View.VISIBLE
+            }
+        }
     }
 }
