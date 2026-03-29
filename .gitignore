@@ -1,0 +1,81 @@
+# IDEA files
+*.iml
+*.temp
+*.DS_Store
+**/out/
+projectFilesBackup/
+
+**/.idea/*
+
+!.idea/encodings.xml
+!.idea/inspectionProfiles/
+!.idea/dictionaries/
+!.idea/runConfigurations/
+!.idea/scopes/
+
+
+# Gradle files
+.gradle/
+# --profile
+reports/profile/
+**/build/
+.android/
+.kotlin/
+.idea/
+
+tmp/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log Files
+*.log
+
+# Composer
+test/composer/output/
+
+# Captures
+captures/
+*.hprof
+
+# Build Time Metrics plugin
+metrics.json
+
+# Python
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*$py.class
+artifacts/
+gen/
+venv/
+
+# CI contracts (see ci/README.md)
+outputs/
+inputs/
+
+*.cache/
+
+# Vim tmp files
+*.swp
+
+# npm
+**/node_modules/
+
+macrobenchmark_reports/
+
+.agents/
+
+# Claude Code local settings (plugins, memory, user config)
+.claude/
+
+# Codex local settings (plugins, memory, user config)
+.codex/
+
+# When user run `git lfs track "**/snapshots/**/*.png"` it creates .gitattributes
+# To avoid errors using this git repo for users who don't need Git LFS we do not store .gitattributes in git
+.gitattributes
+
+# When user run `git lfs track "**/snapshots/**/*.png"` it creates .git/hooks/pre-push
+# To avoid errors using this git repo for users who don't need Git LFS we do not store Git LFS pre-push in git
+/git_hooks/pre-push
