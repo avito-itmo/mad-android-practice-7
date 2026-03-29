@@ -28,7 +28,16 @@ class MainFragment : Fragment() {
 
         with(view) {
             findViewById<Button>(R.id.main_button).setOnClickListener {
-                findNavController().navigate(R.id.action_mainFragment_to_settingsFragment)
+                val fragment = SettingsFragment.newInstance(
+                    args = SettingsFragmentArguments(
+                        argument1 = "some value",
+                        argument2 = 42,
+                    ),
+                )
+                findNavController().navigate(
+                    R.id.action_mainFragment_to_settingsFragment,
+                    fragment.arguments,
+                )
             }
         }
     }

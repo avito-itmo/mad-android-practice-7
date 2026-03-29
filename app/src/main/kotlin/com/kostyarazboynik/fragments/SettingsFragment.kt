@@ -1,10 +1,12 @@
 package com.kostyarazboynik.fragments
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import kotlinx.parcelize.Parcelize
 
 /**
  * A simple [Fragment] subclass.
@@ -13,9 +15,15 @@ import androidx.fragment.app.Fragment
  */
 class SettingsFragment : Fragment() {
 
+    private var args: SettingsFragmentArguments? = null
+    private var defaultIntArgument: Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // set up variables from arguments
+        arguments?.apply {
+            args = getParcelable(ARG_SETTINGS)
+            defaultIntArgument = getInt(OTHER_DEFAULT_INT_ARGUMENT)
+        }
     }
 
     override fun onCreateView(
@@ -27,17 +35,28 @@ class SettingsFragment : Fragment() {
     }
 
     companion object {
+        private const val ARG_SETTINGS = "settings_args_key"
+        private const val OTHER_DEFAULT_INT_ARGUMENT = "other_arg_key"
+
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
          *
+         * @param args [SettingsFragmentArguments] containing fragment parameters.
          * @return A new instance of fragment SettingsFragment.
          */
-        fun newInstance() =
+        fun newInstance(args: SettingsFragmentArguments) =
             SettingsFragment().apply {
                 arguments = Bundle().apply {
-                    // put arguments
+                    putParcelable(ARG_SETTINGS, args)
+                    putInt(OTHER_DEFAULT_INT_ARGUMENT, 0)
                 }
             }
     }
 }
+
+@Parcelize
+data class SettingsFragmentArguments(
+    val argument1: String,
+    val argument2: Int,
+) : Parcelable
