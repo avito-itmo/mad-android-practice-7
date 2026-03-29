@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mainFragment"
+        android:title="Главная" />
+
+    <item
+        android:id="@+id/likesFragment"
+        android:title="Избранное" />
+
+    <item
+        android:id="@+id/feedFragment"
+        android:title="Лента" />
+
+</menu>
